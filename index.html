@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿久澤萌 | 前橋 Voice to Action Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+        body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8fafc; }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-bg { background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%); }
+        .step-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body>
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <span class="text-2xl font-bold text-blue-600">阿久澤萌</span>
+                    <span class="ml-2 text-gray-500 hidden md:inline">Voice to Action Lab</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-blue-600">プロフィール</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">座談会ログ</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600">政策提言</a>
+                    <button class="bg-blue-600 text-white px-5 py-2 rounded-full font-bold hover:bg-blue-700 transition">違和感を投稿する</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-bg py-16 md:py-24 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                前橋の「<span class="gradient-text">違和感</span>」を、<br class="md:hidden">「<span class="gradient-text">未来</span>」に変える。
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
+                あなたの声は、AIと専門家の手によって具体的な政策へと磨かれます。
+                透明なプロセスで、市民が主役のまちづくりをここから始めましょう。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#form" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-700">声を届ける（市民フォーム）</a>
+                <a href="#categories" class="bg-white text-blue-600 border-2 border-blue-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-blue-50">進行中のプロジェクトを見る</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 max-w-7xl mx-auto px-4">
+        <h2 class="text-2xl font-bold text-center mb-12 text-gray-800">声が届き、カタチになるまで</h2>
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">1</div>
+                <h3 class="font-bold mb-2">違和感の投稿</h3>
+                <p class="text-sm text-gray-500">日常の小さな疑問や課題をいつでも投稿可能。</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">2</div>
+                <h3 class="font-bold mb-2">AI & ボード分析</h3>
+                <p class="text-sm text-gray-500">AIが課題を分類し、阿久澤萌と有識者がピックアップ。</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">3</div>
+                <h3 class="font-bold mb-2">公開座談会</h3>
+                <p class="text-sm text-gray-500">専門家と議論。議事録はAIが即座に生成・公開。</p>
+            </div>
+            <div class="text-center">
+                <div class="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">4</div>
+                <h3 class="font-bold mb-2">政策・運動へ</h3>
+                <p class="text-sm text-gray-500">市議会への提言や、市民運動としての立ち上げ。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="categories" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900">重点カテゴリー</h2>
+                    <p class="text-gray-500 mt-2">各領域の専門家（ボードメンバー）と共に解決に挑みます</p>
+                </div>
+                <a href="#" class="text-blue-600 font-bold hover:underline">すべて見る →</a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 step-card">
+                    <div class="text-orange-500 text-3xl mb-4"><i class="fas fa-heart"></i></div>
+                    <h3 class="text-xl font-bold mb-2">福祉</h3>
+                    <p class="text-gray-600 text-sm mb-4">介護、障がい者支援、孤独・孤立対策の座談会。</p>
+                    <div class="text-xs font-bold text-blue-600 bg-blue-50 inline-block px-2 py-1 rounded">月1回開催</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 step-card">
+                    <div class="text-green-500 text-3xl mb-4"><i class="fas fa-graduation-cap"></i></div>
+                    <h3 class="text-xl font-bold mb-2">教育</h3>
+                    <p class="text-gray-600 text-sm mb-4">不登校支援、教育格差、学校のあり方を議論。</p>
+                    <div class="text-xs font-bold text-blue-600 bg-blue-50 inline-block px-2 py-1 rounded">月1回開催</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 step-card">
+                    <div class="text-yellow-600 text-3xl mb-4"><i class="fas fa-seedling"></i></div>
+                    <h3 class="text-xl font-bold mb-2">農業</h3>
+                    <p class="text-gray-600 text-sm mb-4">前橋の農業継承、地産地消、スマート農業。 </p>
+                    <div class="text-xs font-bold text-blue-600 bg-blue-50 inline-block px-2 py-1 rounded">月1回開催</div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 step-card">
+                    <div class="text-purple-500 text-3xl mb-4"><i class="fas fa-users"></i></div>
+                    <h3 class="text-xl font-bold mb-2">自治・地域</h3>
+                    <p class="text-gray-600 text-sm mb-4">自治会運営、地域コミュニティ、防災・防犯。</p>
+                    <div class="text-xs font-bold text-blue-600 bg-blue-50 inline-block px-2 py-1 rounded">月1回開催</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="form" class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-4 bg-blue-50 p-10 rounded-3xl border border-blue-100 shadow-xl">
+            <h2 class="text-3xl font-bold text-center mb-4">あなたの違和感を教えてください</h2>
+            <p class="text-center text-gray-600 mb-8">前橋市民ならどなたでも。小さな「？」が大きな変革の第一歩です。</p>
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">カテゴリーを選択</label>
+                    <select class="w-full p-4 rounded-xl border-gray-200 shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option>福祉について</option>
+                        <option>教育について</option>
+                        <option>農業について</option>
+                        <option>自治・地域づくりについて</option>
+                        <option>その他・全般</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">内容（違和感・課題・問い）</label>
+                    <textarea class="w-full p-4 rounded-xl border-gray-200 shadow-sm h-32" placeholder="例：自治会の役員の負担が大きく、若者が参加しづらい現状をどうにかしたい..."></textarea>
+                </div>
+                <button type="button" class="w-full bg-blue-600 text-white py-4 rounded-xl font-bold text-xl hover:bg-blue-700 transition shadow-lg">
+                    この声を届ける
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-6">
+                <span class="text-2xl font-bold">阿久澤萌</span>
+                <p class="text-gray-400 mt-2">前橋市議会議員 | 市民の声を、前橋の力に。</p>
+            </div>
+            <div class="flex justify-center space-x-6 text-gray-400 mb-8">
+                <a href="#" class="hover:text-white"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-facebook text-2xl"></i></a>
+                <a href="#" class="hover:text-white"><i class="fab fa-instagram text-2xl"></i></a>
+            </div>
+            <p class="text-xs text-gray-500">© 2024 Moe Akuzawa Digital Lab. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
