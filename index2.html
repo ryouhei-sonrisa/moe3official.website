@@ -1,159 +1,2216 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>前橋 Voice to Action Lab | 阿久澤 萌（あくざわもえ）</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
-        body { font-family: 'Noto Sans JP', sans-serif; background-color: #f8fafc; color: #333; }
-        .bg-maebashi-blue { background-color: #00A3E0; }
-        .text-maebashi-blue { color: #00A3E0; }
-        .bg-hope-yellow { background-color: #FFD700; }
-        .border-maebashi-blue { border-color: #00A3E0; }
-        .status-pill { padding: 2px 10px; border-radius: 999px; font-size: 0.75rem; font-weight: bold; }
-        .card-shadow { box-shadow: 0 4px 20px rgba(0, 163, 224, 0.1); }
-        .insta-grid-item { aspect-ratio: 1 / 1; overflow: hidden; position: relative; }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow,noarchive" />
+  <meta name="googlebot" content="noindex,nofollow,noarchive" />
+  <title>前橋 Voice to Action Lab｜阿久澤萌（あくざわもえ）</title>
+  <meta name="description" content="あなたの小さな違和感を、前橋の未来へ。市民の声→対話→政策のプロセスを見える化するデジタルプラットフォーム（プロトタイプ）。" />
+  <meta name="theme-color" content="#00A3E0" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#00A3E0;
+      --blue-2:#0D6E9A;
+      --yellow:#FFD34D;
+      --orange:#FF8A3D;
+      --ink:#0B1220;
+      --muted:#5A6476;
+      --bg:#F6FBFF;
+      --card:#FFFFFF;
+      --line:rgba(15,23,42,.10);
+      --shadow: 0 18px 45px rgba(0,0,0,.08);
+      --shadow2: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 18px;
+      --radius2: 26px;
+      --cap: "Shippori Mincho", serif;
+      --ui: "Zen Maru Gothic", system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+
+      --max: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--ui);
+      color:var(--ink);
+      background:
+        radial-gradient(1100px 550px at 18% 12%, rgba(0,163,224,.16), transparent 55%),
+        radial-gradient(800px 420px at 85% 8%, rgba(255,211,77,.20), transparent 55%),
+        radial-gradient(900px 520px at 70% 92%, rgba(255,138,61,.12), transparent 60%),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 70%, #ffffff 140%);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit;text-decoration:none}
+    button, input, textarea, select{font:inherit}
+    ::selection{background:rgba(0,163,224,.18)}
+
+    /* Layout */
+    .wrap{max-width:var(--max); margin:0 auto; padding: 0 20px;}
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.72));
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{
+      display:flex; align-items:center; justify-content:space-between;
+      padding: 12px 0;
+      gap:14px;
+    }
+
+    .brand{
+      display:flex; align-items:center; gap:10px; min-width: 230px;
+    }
+    .mark{
+      width:38px; height:38px; border-radius: 14px;
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.85), transparent 55%),
+        conic-gradient(from 210deg, var(--blue), var(--yellow), var(--orange), var(--blue));
+      box-shadow: 0 10px 20px rgba(0,163,224,.18);
+      position:relative;
+    }
+    .mark:after{
+      content:"";
+      position:absolute; inset:6px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(255,255,255,.8);
+    }
+    .brand-title{display:flex; flex-direction:column; line-height:1.15}
+    .brand-title .kicker{
+      font-family: var(--cap);
+      font-size:12px; letter-spacing:.04em; color: var(--blue-2);
+    }
+    .brand-title .name{
+      font-weight:800; font-size:14px;
+    }
+
+    .nav{
+      display:flex; align-items:center; gap: 14px;
+      padding: 6px 10px;
+      border:1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.7);
+      box-shadow: 0 10px 25px rgba(0,0,0,.04);
+    }
+    .nav a{
+      font-size:13px;
+      color: var(--muted);
+      padding: 8px 10px;
+      border-radius: 999px;
+      transition: .2s ease;
+      white-space:nowrap;
+    }
+    .nav a:hover{background: rgba(0,163,224,.08); color: var(--ink);}
+    .nav a.active{background: rgba(0,163,224,.12); color: var(--ink);}
+
+    .actions{display:flex; align-items:center; gap:10px;}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      box-shadow: var(--shadow2);
+      transition: .2s ease;
+      cursor:pointer;
+    }
+    .pill:hover{transform: translateY(-1px);}
+    .pill .dot{
+      width:10px; height:10px; border-radius: 50%;
+      background: var(--yellow);
+      box-shadow: 0 6px 18px rgba(255,211,77,.30);
+    }
+    .primary{
+      border-color: rgba(0,163,224,.22);
+      background: linear-gradient(135deg, rgba(0,163,224,.12), rgba(255,211,77,.12));
+    }
+    .primary .dot{background: var(--blue)}
+    .pill strong{font-size:13px}
+    .pill span{font-size:12px; color: var(--muted)}
+
+    /* Hero */
+    .hero{
+      padding: 26px 0 8px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .card{
+      background: var(--card);
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero-main{
+      padding: 22px;
+      min-height: 360px;
+      display:flex; flex-direction:column; justify-content:space-between;
+      background:
+        radial-gradient(500px 240px at 20% 20%, rgba(0,163,224,.16), transparent 55%),
+        radial-gradient(480px 240px at 75% 25%, rgba(255,211,77,.20), transparent 55%),
+        radial-gradient(620px 320px at 70% 110%, rgba(255,138,61,.10), transparent 62%),
+        linear-gradient(180deg, rgba(255,255,255,.90), rgba(246,251,255,.92));
+    }
+
+    .hero-caption{
+      font-family: var(--cap);
+      color: var(--blue-2);
+      letter-spacing:.06em;
+      font-size: 12px;
+      margin-bottom: 10px;
+      display:flex; align-items:center; gap:10px;
+    }
+    .hero-caption .badge{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid rgba(0,163,224,.20);
+      background: rgba(0,163,224,.08);
+      font-family: var(--ui);
+      letter-spacing:0;
+      color: var(--ink);
+      font-size: 12px;
+    }
+    .hero-caption .badge i{
+      width:7px; height:7px; border-radius: 999px; background: var(--blue);
+      display:inline-block;
+      box-shadow: 0 10px 25px rgba(0,163,224,.25);
+    }
+
+    h1{
+      margin:0;
+      font-size: 28px;
+      line-height:1.2;
+      letter-spacing:-.01em;
+    }
+    .lead{
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14.5px;
+      line-height: 1.8;
+      max-width: 62ch;
+    }
+    .lead strong{color: var(--ink)}
+    .hero-cta{
+      margin-top: 16px;
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+      box-shadow: var(--shadow2);
+      cursor:pointer;
+      transition: .18s ease;
+      user-select:none;
+    }
+    .btn:hover{transform: translateY(-1px);}
+    .btn:active{transform: translateY(0px) scale(.99);}
+    .btn.primary{
+      border-color: rgba(0,163,224,.26);
+      background: linear-gradient(135deg, rgba(0,163,224,.15), rgba(255,211,77,.18));
+    }
+    .btn .icon{
+      width: 26px; height:26px; border-radius: 10px;
+      display:grid; place-items:center;
+      background: rgba(0,163,224,.10);
+      border:1px solid rgba(0,163,224,.15);
+    }
+    .btn.primary .icon{background: rgba(255,211,77,.22); border-color: rgba(255,211,77,.30);}
+    .btn .icon svg{width:16px;height:16px}
+    .btn strong{font-size:14px}
+    .btn span{font-size:12px;color:var(--muted)}
+
+    .hero-quote{
+      margin-top: 18px;
+      padding: 14px 14px 14px 16px;
+      border-left: 3px solid rgba(0,163,224,.55);
+      background: rgba(255,255,255,.55);
+      border-radius: 16px;
+      font-family: var(--cap);
+    }
+    .hero-quote p{
+      margin:0;
+      font-size: 13.5px;
+      line-height:1.9;
+      color:#283144;
+    }
+
+    /* Side card */
+    .hero-side{
+      padding: 18px;
+      display:flex; flex-direction:column; gap:12px;
+    }
+    .portrait{
+      display:flex; align-items:center; gap:12px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+    }
+    .avatar{
+      width: 52px; height: 52px; border-radius: 18px;
+      background:
+        radial-gradient(20px 20px at 30% 30%, rgba(255,255,255,.9), transparent 55%),
+        linear-gradient(135deg, rgba(0,163,224,.9), rgba(255,211,77,.85));
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 16px 30px rgba(0,163,224,.18);
+    }
+    .avatar:after{
+      content:"";
+      position:absolute; inset:-18px;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.35), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,.18), transparent 55%);
+      transform: rotate(15deg);
+    }
+    .who .role{font-size:12px;color:var(--muted)}
+    .who .person{font-weight:900; letter-spacing:.02em}
+    .who .tagline{
+      margin-top:4px;
+      font-size:12px;
+      color:#334155;
+      font-family: var(--cap);
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .stat{
+      padding: 12px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.74);
+    }
+    .stat .n{font-weight:900; font-size:18px}
+    .stat .t{font-size:12px; color:var(--muted); margin-top:4px}
+    .stat .hint{
+      margin-top:6px;
+      font-size:11px;
+      color:#2b3344;
+      font-family: var(--cap);
+      line-height:1.6;
+    }
+
+    .mini{
+      padding: 12px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: linear-gradient(135deg, rgba(0,163,224,.08), rgba(255,211,77,.10));
+    }
+    .mini .h{font-weight:900; font-size:13px}
+    .mini .p{margin:6px 0 0; font-size:12px; color:var(--muted); line-height:1.8}
+
+    /* Sections */
+    section{padding: 18px 0}
+    .section-head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin: 14px 0 10px;
+    }
+    .section-head h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing:-.01em;
+    }
+    .section-head p{
+      margin:0;
+      color:var(--muted);
+      font-size: 12.5px;
+      line-height:1.7;
+      max-width: 62ch;
+      font-family: var(--cap);
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .grid-3{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr .8fr;
+      gap: 14px;
+    }
+
+    .pane{padding: 16px;}
+    .pane .cap{
+      font-family: var(--cap);
+      font-size: 12px;
+      letter-spacing:.05em;
+      color: var(--blue-2);
+      margin-bottom: 8px;
+    }
+
+    /* Timeline */
+    .timeline-tools{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between;
+      margin-bottom: 10px;
+    }
+    .chips{display:flex; gap:8px; flex-wrap:wrap;}
+    .chip{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      cursor:pointer;
+      font-size: 12px;
+      color: var(--muted);
+      transition: .15s ease;
+      user-select:none;
+    }
+    .chip:hover{transform: translateY(-1px);}
+    .chip.active{background: rgba(0,163,224,.12); color: var(--ink); border-color: rgba(0,163,224,.20);}
+    .search{
+      display:flex; align-items:center; gap:8px;
+      padding: 10px 12px;
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.75);
+      min-width: 240px;
+    }
+    .search input{
+      border:none; outline:none; background:transparent;
+      width: 100%;
+      font-size: 13px;
+    }
+
+    .posts{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .post{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      box-shadow: 0 10px 25px rgba(0,0,0,.04);
+    }
+    .post-top{
+      display:flex; gap:10px; align-items:flex-start; justify-content:space-between;
+    }
+    .post-meta{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .post-meta .title{
+      font-weight:900;
+      font-size: 14px;
+      letter-spacing:-.01em;
+    }
+    .post-meta .sub{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .tag{
+      display:inline-flex; align-items:center; gap:6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.65);
+      font-size: 11px;
+      color: #2b3344;
+    }
+    .tag i{width:7px; height:7px; border-radius: 999px; background: var(--yellow); display:inline-block;}
+    .tag.blue i{background: var(--blue);}
+    .tag.orange i{background: var(--orange);}
+
+    .post-body{
+      color:#2b3344;
+      font-size: 13px;
+      line-height: 1.85;
+      font-family: var(--cap);
+      padding-right: 6px;
+    }
+
+    .post-actions{
+      display:flex; flex-wrap:wrap; gap:8px; align-items:center; justify-content:space-between;
+      border-top:1px dashed rgba(15,23,42,.12);
+      padding-top: 10px;
+    }
+
+    .progress{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .stepbar{
+      display:flex; align-items:center; gap:6px;
+      padding: 7px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(0,163,224,.18);
+      background: rgba(0,163,224,.06);
+      font-size: 11px;
+      color: #243047;
+      white-space: nowrap;
+    }
+    .dots{
+      display:flex; gap:4px; align-items:center;
+    }
+    .dots span{
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(0,0,0,.12);
+    }
+    .dots span.on{background: var(--blue); box-shadow: 0 10px 25px rgba(0,163,224,.25);}
+    .tiny{
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .btn-xs{
+      padding: 8px 10px;
+      border-radius: 12px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      cursor:pointer;
+      font-size: 12px;
+      transition: .15s ease;
+    }
+    .btn-xs:hover{transform: translateY(-1px);}
+    .btn-xs.primary{
+      border-color: rgba(255,138,61,.25);
+      background: rgba(255,138,61,.10);
+    }
+
+    /* Form */
+    .form{
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px;}
+    .field{
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .label{
+      font-size: 12px;
+      color: #2b3344;
+      font-weight:800;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+    }
+    .label em{font-style:normal; font-weight:600; color:var(--muted); font-family:var(--cap); font-size:12px}
+    .control{
+      border:1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,.80);
+      padding: 10px 12px;
+      outline:none;
+      transition: .15s ease;
+    }
+    .control:focus{
+      border-color: rgba(0,163,224,.35);
+      box-shadow: 0 0 0 4px rgba(0,163,224,.10);
+    }
+    textarea.control{min-height: 120px; resize: vertical; line-height:1.75}
+    .hintline{font-size: 12px; color: var(--muted); font-family:var(--cap); line-height:1.7}
+    .attachments{
+      display:flex; flex-wrap:wrap; gap:10px;
+      padding: 10px;
+      border-radius: var(--radius);
+      border:1px dashed rgba(15,23,42,.16);
+      background: rgba(255,255,255,.55);
+    }
+    .att{
+      flex:1;
+      min-width: 180px;
+      padding: 10px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.78);
+    }
+    .att .top{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .att .top strong{font-size: 12.5px}
+    .att .top .mini-btn{
+      padding: 7px 9px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      cursor:pointer;
+      font-size: 12px;
+    }
+    .att .file{
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+      font-family: var(--cap);
+    }
+    .preview{
+      margin-top: 10px;
+      display:none;
+      border-radius: 16px;
+      overflow:hidden;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(0,0,0,.04);
+    }
+    .preview img{width:100%; display:block}
+    .submitline{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between;
+      margin-top: 4px;
+    }
+    .privacy{
+      font-size: 12px;
+      color: var(--muted);
+      font-family: var(--cap);
+      line-height: 1.7;
+      max-width: 62ch;
+    }
+    .privacy b{color:var(--ink)}
+    .toast{
+      position: fixed; left: 50%; bottom: 18px;
+      transform: translateX(-50%);
+      background: rgba(11,18,32,.92);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-size: 12px;
+      box-shadow: 0 20px 45px rgba(0,0,0,.18);
+      opacity:0; pointer-events:none;
+      transition:.22s ease;
+      max-width: min(520px, calc(100vw - 30px));
+      z-index: 200;
+    }
+    .toast.on{opacity:1; transform: translateX(-50%) translateY(-3px);}
+
+    /* Roundtable */
+    .roundtabs{display:flex; gap:8px; flex-wrap:wrap; margin-bottom: 10px;}
+    .rt{
+      padding: 8px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      cursor:pointer;
+      font-size: 12px;
+      color: var(--muted);
+      user-select:none;
+      transition:.15s ease;
+    }
+    .rt.active{background: rgba(255,211,77,.18); color: var(--ink); border-color: rgba(255,211,77,.35);}
+    .rt:hover{transform: translateY(-1px);}
+
+    .embed{
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      overflow:hidden;
+      background: rgba(0,0,0,.05);
+      aspect-ratio: 16/9;
+      min-height: 210px;
+    }
+    .embed iframe{width:100%; height:100%; border:0}
+
+    .minutes{
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border:1px solid rgba(0,163,224,.18);
+      background: rgba(0,163,224,.06);
+    }
+    .minutes .mh{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+    .minutes .mh strong{font-size: 13px}
+    .minutes .mh span{font-size: 12px; color: var(--muted); font-family: var(--cap);}
+    .minutes ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color:#2b3344;
+      font-size: 12.5px;
+      line-height: 1.85;
+      font-family: var(--cap);
+    }
+
+    /* Process map */
+    .map{
+      padding: 16px;
+    }
+    .flow{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+    .node{
+      flex: 1;
+      min-width: 200px;
+      padding: 12px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      position:relative;
+      overflow:hidden;
+    }
+    .node:before{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(280px 160px at 20% 20%, rgba(0,163,224,.10), transparent 60%);
+      pointer-events:none;
+    }
+    .node h3{margin:0; font-size: 13px; letter-spacing:-.01em}
+    .node p{margin:6px 0 0; font-size: 12px; color: var(--muted); line-height:1.8; font-family: var(--cap);}
+    .node .who{
+      margin-top: 10px;
+      display:flex; flex-wrap:wrap; gap:8px;
+    }
+    .whochip{
+      display:inline-flex; align-items:center; gap:7px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.65);
+      font-size: 11px;
+      color:#2b3344;
+    }
+    .whochip b{font-weight:900}
+    .whochip i{
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--blue);
+      display:inline-block;
+    }
+    .whochip.y i{background: var(--yellow)}
+    .whochip.o i{background: var(--orange)}
+
+    .casebox{
+      margin-top: 12px;
+      border-top: 1px dashed rgba(15,23,42,.14);
+      padding-top: 10px;
+      display:flex; flex-direction:column; gap:8px;
+    }
+    .casebox .case{
+      padding: 10px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.76);
+    }
+    .case .ct{font-weight:900; font-size: 12.5px}
+    .case .cd{
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height:1.8;
+      font-family: var(--cap);
+    }
+
+    /* Board */
+    .board{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .member{
+      padding: 14px;
+      border-radius: var(--radius);
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.80);
+      box-shadow: 0 10px 25px rgba(0,0,0,.04);
+      display:flex; flex-direction:column; gap:8px;
+      min-height: 140px;
+      position:relative;
+      overflow:hidden;
+    }
+    .member:after{
+      content:"";
+      position:absolute; right:-60px; top:-60px;
+      width:140px; height:140px; border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.7), transparent 55%),
+                  radial-gradient(circle at 60% 60%, rgba(0,163,224,.18), transparent 60%);
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .member .n{font-weight:900}
+    .member .r{font-size: 12px; color:var(--muted)}
+    .member .s{
+      font-size: 12px;
+      color:#2b3344;
+      line-height:1.8;
+      font-family: var(--cap);
+    }
+    .member .k{
+      margin-top:auto;
+      display:flex; gap:6px; flex-wrap:wrap;
+    }
+    .k .pill2{
+      font-size: 11px;
+      padding: 6px 8px;
+      border-radius: 999px;
+      border:1px solid rgba(0,163,224,.18);
+      background: rgba(0,163,224,.06);
+      color:#243047;
+    }
+    .k .pill2.y{border-color: rgba(255,211,77,.40); background: rgba(255,211,77,.18);}
+    .k .pill2.o{border-color: rgba(255,138,61,.30); background: rgba(255,138,61,.12);}
+
+    /* Footer */
+    footer{
+      padding: 26px 0 60px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .foot{
+      display:flex; justify-content:space-between; gap:14px; flex-wrap:wrap;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+    .foot a{
+      padding: 6px 10px;
+      border-radius: 999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.70);
+      color: #2b3344;
+    }
+
+    /* Bottom mobile bar */
+    .mobilebar{
+      position: fixed; left: 50%; bottom: 10px;
+      transform: translateX(-50%);
+      width: min(560px, calc(100vw - 24px));
+      padding: 10px;
+      border-radius: 18px;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.84);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 22px 60px rgba(0,0,0,.12);
+      z-index: 120;
+      display:none;
+    }
+    .mobilebar .inner{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+    }
+    .mnav{
+      display:flex; gap:6px; flex:1;
+    }
+    .mnav button{
+      flex:1;
+      padding: 10px 8px;
+      border-radius: 14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      cursor:pointer;
+      font-size: 12px;
+      color: var(--muted);
+      transition:.15s ease;
+    }
+    .mnav button.active{background: rgba(0,163,224,.12); color: var(--ink); border-color: rgba(0,163,224,.20);}
+    .fab{
+      padding: 10px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,138,61,.28);
+      background: linear-gradient(135deg, rgba(255,138,61,.14), rgba(255,211,77,.18));
+      cursor:pointer;
+      font-weight: 900;
+      white-space:nowrap;
+    }
+
+    /* Modal */
+    .modal{
+      position: fixed; inset:0; z-index: 300;
+      display:none;
+      align-items:center; justify-content:center;
+      padding: 18px;
+      background: rgba(11,18,32,.40);
+      backdrop-filter: blur(10px);
+    }
+    .modal.on{display:flex;}
+    .modal .box{
+      width: min(760px, 100%);
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 30px 90px rgba(0,0,0,.22);
+      overflow:hidden;
+    }
+    .modal .head{
+      padding: 14px 16px;
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(135deg, rgba(0,163,224,.10), rgba(255,211,77,.10));
+    }
+    .modal .head strong{font-size: 13px}
+    .modal .head button{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.75);
+      border-radius: 12px;
+      padding: 8px 10px;
+      cursor:pointer;
+      font-size: 12px;
+    }
+    .modal .content{padding: 16px;}
+    .modal .content p{
+      margin:0 0 10px;
+      color: #2b3344;
+      font-size: 12.8px;
+      line-height: 1.9;
+      font-family: var(--cap);
+    }
+    .modal .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .info{
+      padding: 12px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.74);
+    }
+    .info .h{font-weight:900; font-size: 12.5px}
+    .info .d{margin-top:6px; font-size: 12px; color: var(--muted); line-height:1.8}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns: 1fr; }
+      .brand{min-width:auto}
+      .grid-3{grid-template-columns: 1fr}
+      .board{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 720px){
+      .nav{display:none}
+      .actions .pill{display:none}
+      .hero-main{min-height: 340px}
+      h1{font-size: 24px}
+      .row{grid-template-columns: 1fr}
+      .search{min-width: 0; width: 100%}
+      .grid-2{grid-template-columns: 1fr}
+      .board{grid-template-columns: 1fr}
+      .mobilebar{display:block}
+      footer{padding-bottom: 90px}
+    }
+
+    /* Motion preference */
+    @media (prefers-reduced-motion: reduce){
+      *{scroll-behavior:auto !important; transition:none !important;}
+    }
+  </style>
 </head>
+
 <body>
+  <!-- Topbar -->
+  <header class="topbar" role="banner">
+    <div class="wrap">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="前橋 Voice to Action Lab トップへ">
+          <div class="mark" aria-hidden="true"></div>
+          <div class="brand-title">
+            <div class="kicker">Voice to Action Lab</div>
+            <div class="name">前橋の「違和感」を未来へ｜阿久澤萌</div>
+          </div>
+        </a>
 
-    <header class="bg-white sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-10 h-10 bg-maebashi-blue rounded-full flex items-center justify-center text-white font-bold text-xl">M</div>
-                <div>
-                    <h1 class="text-lg font-bold leading-none text-maebashi-blue">Voice to Action Lab</h1>
-                    <p class="text-xs text-gray-500">前橋の「違和感」を「未来」に変える</p>
-                </div>
-            </div>
-            <nav class="hidden md:flex space-x-6 text-sm font-medium">
-                <a href="#about" class="hover:text-maebashi-blue">ラボについて</a>
-                <a href="#timeline" class="hover:text-maebashi-blue">政策のタネ</a>
-                <a href="#post" class="bg-maebashi-blue text-white px-4 py-2 rounded-full shadow-md">投稿する</a>
-            </nav>
-        </div>
-    </header>
+        <nav class="nav" aria-label="ページ内ナビゲーション">
+          <a href="#timeline" class="active">政策の種</a>
+          <a href="#post">違和感ポスト</a>
+          <a href="#roundtable">デジタル座談会</a>
+          <a href="#process">プロセス・マップ</a>
+          <a href="#board">ボード</a>
+        </nav>
 
-    <section class="bg-maebashi-blue text-white py-12 px-4 relative overflow-hidden">
-        <div class="container mx-auto relative z-10">
-            <div class="md:w-2/3">
-                <span class="inline-block bg-hope-yellow text-blue-900 px-3 py-1 rounded-md text-sm font-bold mb-4">前橋市議会議員 阿久澤 萌</span>
-                <h2 class="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                    あなたの「小さな違和感」が、<br>前橋の明日を「みんなでつくる」問いになる。
-                </h2>
-                <p class="text-lg mb-8 opacity-90 leading-relaxed">
-                    「これっておかしくない？」という気づきを、専門家の知恵とAIで具体的な政策へ。<br>
-                    対話を通じて一歩ずつ、誠実に進めていくOSです。
-                </p>
-                <div class="flex space-x-4">
-                    <a href="#post" class="bg-white text-maebashi-blue px-6 py-3 rounded-full font-bold shadow-lg hover:bg-hope-yellow hover:text-blue-900 transition">違和感を届ける</a>
-                    <a href="#map" class="border-2 border-white px-6 py-3 rounded-full font-bold hover:bg-white hover:text-maebashi-blue transition text-center">プロセスの可視化</a>
-                </div>
+        <div class="actions">
+          <button class="pill" id="btnAbout" type="button" aria-haspopup="dialog" aria-controls="modal">
+            <span class="dot" aria-hidden="true"></span>
+            <div style="display:flex;flex-direction:column;line-height:1.1;text-align:left">
+              <strong>これは何？</strong>
+              <span>プロトタイプの目的</span>
             </div>
+          </button>
+          <button class="pill primary" id="btnQuickPost" type="button">
+            <span class="dot" aria-hidden="true"></span>
+            <div style="display:flex;flex-direction:column;line-height:1.1;text-align:left">
+              <strong>投稿する</strong>
+              <span>片手でOK</span>
+            </div>
+          </button>
         </div>
-        <div class="absolute right-0 bottom-0 opacity-20 transform translate-x-1/4 translate-y-1/4">
-            <i class="fas fa-bullhorn text-[300px]"></i>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="wrap" role="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="ヒーロー">
+      <div class="hero-grid">
+        <div class="card hero-main">
+          <div>
+            <div class="hero-caption">
+              <span class="badge"><i></i> 市民の声 → 対話 → 政策を “見える化”</span>
+              <span style="color:var(--muted);font-family:var(--ui);font-size:12px;">（限定公開プロトタイプ）</span>
+            </div>
+
+            <h1>
+              小さな違和感が、<br />
+              <span style="background:linear-gradient(90deg,var(--blue),var(--orange));-webkit-background-clip:text;background-clip:text;color:transparent;">
+                前橋の「行動」
+              </span>
+              になるまで。
+            </h1>
+
+            <p class="lead">
+              ここは「意見箱」ではなく、<strong>違和感が専門知とAIを経て、政策・予算・市民運動へと昇華されるプロセス</strong>を可視化する“OS”です。<br />
+              あなたの声は、安心して置いていけます。
+            </p>
+
+            <div class="hero-cta">
+              <button class="btn primary" id="goPost" type="button">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M12 22s8-4.5 8-11a8 8 0 1 0-16 0c0 6.5 8 11 8 11Z" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M9.5 11.5h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M12 9v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                  <strong>違和感を投稿</strong>
+                  <span>テキスト・画像・音声</span>
+                </div>
+              </button>
+
+              <a class="btn" href="#timeline">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                  <strong>いま動く議論を見る</strong>
+                  <span>政策の種タイムライン</span>
+                </div>
+              </a>
+
+              <a class="btn" href="https://akuzawamoe.com/" target="_blank" rel="noreferrer noopener">
+                <span class="icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none">
+                    <path d="M14 3h7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M10 14 21 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                    <path d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  </svg>
+                </span>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                  <strong>阿久澤萌 公式</strong>
+                  <span>プロフィール・基本政策</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="hero-quote" aria-label="コンセプトの一文">
+              <p>
+                「ここなら、自分の声を届けてもいいかも」——<br />
+                そんな安心感から始まって、前橋を一緒につくっていく。
+              </p>
+            </div>
+          </div>
         </div>
+
+        <aside class="card hero-side" aria-label="サイド情報">
+          <div class="portrait">
+            <div class="avatar" aria-hidden="true"></div>
+            <div class="who">
+              <div class="role">前橋市議｜市民とつくる政策</div>
+              <div class="person">阿久澤萌（あくざわ もえ）</div>
+              <div class="tagline">誠実に、熱く、親しみやすく。<br/>“問い”を手放さない政治へ。</div>
+            </div>
+          </div>
+
+          <div class="stats" aria-label="簡易ステータス">
+            <div class="stat">
+              <div class="n" id="statPosts">—</div>
+              <div class="t">市民の投稿（ローカル）</div>
+              <div class="hint">※このプロトタイプでは端末内に保存</div>
+            </div>
+            <div class="stat">
+              <div class="n" id="statActive">—</div>
+              <div class="t">いま動いている議論</div>
+              <div class="hint">投稿→解析→対話→提言</div>
+            </div>
+          </div>
+
+          <div class="mini" aria-label="ここでできること">
+            <div class="h">このサイトでできること</div>
+            <div class="p">
+              ① 違和感を投稿 → ② AIが整理 → ③ 座談会で深掘り → ④ 議会・提言へ。<br />
+              “未完成”も共有し、透明性を担保します。
+            </div>
+          </div>
+
+          <button class="btn" id="btnScrollProcess" type="button" style="justify-content:space-between">
+            <span style="display:flex;align-items:center;gap:10px;">
+              <span class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <path d="M7 16l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                <strong>プロセスを見る</strong>
+                <span>“声が政策になるまで”</span>
+              </span>
+            </span>
+            <span aria-hidden="true" style="color:var(--muted);font-size:12px;">→</span>
+          </button>
+        </aside>
+      </div>
     </section>
 
-    <section id="timeline" class="py-16 container mx-auto px-4">
-        <h3 class="text-2xl font-bold border-l-4 border-maebashi-blue pl-4 mb-8">現在動いている「政策の種」</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white p-6 rounded-2xl card-shadow border-t-4 border-maebashi-blue">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="status-pill bg-blue-100 text-maebashi-blue">AI解析中</span>
-                    <span class="text-xs text-gray-400">2時間前</span>
-                </div>
-                <h4 class="font-bold mb-2">通学路の「街灯の死角」についての違和感</h4>
-                <div class="w-full bg-gray-200 rounded-full h-1.5 mb-2">
-                    <div class="bg-maebashi-blue h-1.5 rounded-full" style="width: 40%"></div>
-                </div>
-                <p class="text-[10px] text-right text-gray-500">進捗: 市民の投稿 ➔ <b>AI解析</b> ➔ 提言</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl card-shadow border-t-4 border-hope-yellow">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="status-pill bg-yellow-100 text-yellow-700">座談会準備中</span>
-                    <span class="text-xs text-gray-400">1日前</span>
-                </div>
-                <h4 class="font-bold mb-2">独居高齢者の「買い物難民」問題</h4>
-                <div class="w-full bg-gray-200 rounded-full h-1.5 mb-2">
-                    <div class="bg-hope-yellow h-1.5 rounded-full" style="width: 70%"></div>
-                </div>
-                <p class="text-[10px] text-right text-gray-500">進捗: 市民の声 ➔ <b>座談会準備</b> ➔ 提言</p>
-            </div>
-            <div class="bg-white p-6 rounded-2xl card-shadow border-t-4 border-green-400">
-                <div class="flex justify-between items-start mb-4">
-                    <span class="status-pill bg-green-100 text-green-700">政策提言済み</span>
-                    <span class="text-xs text-gray-400">5日前</span>
-                </div>
-                <h4 class="font-bold mb-2">公園の多目的トイレ改修プラン</h4>
-                <div class="w-full bg-gray-200 rounded-full h-1.5 mb-2">
-                    <div class="bg-green-400 h-1.5 rounded-full" style="width: 100%"></div>
-                </div>
-                <p class="text-[10px] text-right text-gray-500">進捗: <b>完了 - 12月定例会で採択</b></p>
-            </div>
+    <!-- Timeline -->
+    <section id="timeline" aria-label="政策の種タイムライン">
+      <div class="section-head">
+        <div>
+          <h2>政策の種（タイムライン）</h2>
+          <p>いま前橋で動いている「小さな違和感」を、ステップ付きで流します。Instagramのように軽やかに、でも中身は誠実に。</p>
         </div>
+        <div class="tiny">※この画面はデモデータ＋あなたの投稿で更新されます</div>
+      </div>
+
+      <div class="card pane">
+        <div class="timeline-tools">
+          <div class="chips" role="tablist" aria-label="カテゴリフィルタ">
+            <div class="chip active" data-filter="all" role="tab" aria-selected="true">すべて</div>
+            <div class="chip" data-filter="福祉" role="tab">福祉</div>
+            <div class="chip" data-filter="教育" role="tab">教育</div>
+            <div class="chip" data-filter="農業" role="tab">農業</div>
+            <div class="chip" data-filter="自治・地域" role="tab">自治・地域</div>
+          </div>
+
+          <div class="search" aria-label="検索">
+            <span aria-hidden="true" style="opacity:.7">⌕</span>
+            <input id="q" type="search" placeholder="キーワードで探す（例：歩道、給食、バス）" />
+          </div>
+        </div>
+
+        <div class="posts" id="posts" aria-live="polite"></div>
+      </div>
     </section>
 
-    <section class="py-16 bg-white border-y border-gray-100">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center space-x-3 mb-8">
-                <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-500 p-0.5">
-                    <div class="w-full h-full rounded-full bg-white p-0.5">
-                        <img src="https://via.placeholder.com/100" class="rounded-full w-full h-full object-cover">
-                    </div>
-                </div>
-                <div>
-                    <h3 class="font-bold text-lg">moe.akuzawa_activity</h3>
-                    <p class="text-sm text-gray-500">活動ログをチェック</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-3 gap-1 md:gap-4">
-                <div class="insta-grid-item bg-gray-100 rounded-md">
-                    <img src="https://via.placeholder.com/400?text=Activity+1" class="w-full h-full object-cover">
-                </div>
-                <div class="insta-grid-item bg-gray-100 rounded-md">
-                    <img src="https://via.placeholder.com/400?text=Activity+2" class="w-full h-full object-cover">
-                </div>
-                <div class="insta-grid-item bg-gray-100 rounded-md">
-                    <img src="https://via.placeholder.com/400?text=Activity+3" class="w-full h-full object-cover">
-                </div>
-            </div>
+    <!-- Post form -->
+    <section id="post" aria-label="前橋の違和感ポスト">
+      <div class="section-head">
+        <div>
+          <h2>前橋の違和感ポスト</h2>
+          <p>言葉がまとまっていなくても大丈夫。感情と場面を置いていけば、こちらで丁寧に整理します。</p>
         </div>
+        <div class="tiny">送信はローカル保存（デモ）／実運用は認証・暗号化推奨</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card pane">
+          <div class="cap">Step 1｜あなたの声を置く</div>
+
+          <form class="form" id="postForm">
+            <div class="row">
+              <div class="field">
+                <div class="label">
+                  <span>お名前（任意）</span>
+                  <em>匿名でもOK</em>
+                </div>
+                <input class="control" id="name" placeholder="例：まえばしの市民" maxlength="40" />
+              </div>
+
+              <div class="field">
+                <div class="label">
+                  <span>カテゴリ</span>
+                  <em>あとで変更できます</em>
+                </div>
+                <select class="control" id="cat">
+                  <option>福祉</option>
+                  <option>教育</option>
+                  <option>農業</option>
+                  <option selected>自治・地域</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label">
+                <span>今の気持ち</span>
+                <em>違和感 / 怒り / 期待 / 不安 など</em>
+              </div>
+              <select class="control" id="feel">
+                <option>違和感</option>
+                <option>怒り</option>
+                <option>不安</option>
+                <option>期待</option>
+                <option>困っている</option>
+                <option>うれしかった（共有したい）</option>
+              </select>
+            </div>
+
+            <div class="row">
+              <div class="field">
+                <div class="label">
+                  <span>場所・シーン（任意）</span>
+                  <em>例：◯◯公園の入口</em>
+                </div>
+                <input class="control" id="place" placeholder="できる範囲でOK" maxlength="80" />
+              </div>
+
+              <div class="field">
+                <div class="label">
+                  <span>どうなったら嬉しい？（任意）</span>
+                  <em>理想を一言で</em>
+                </div>
+                <input class="control" id="wish" placeholder="例：安心して通れる歩道" maxlength="80" />
+              </div>
+            </div>
+
+            <div class="field">
+              <div class="label">
+                <span>内容</span>
+                <em>短くても大丈夫</em>
+              </div>
+              <textarea class="control" id="body" required placeholder="例：夕方、バス停の周りが暗くて怖い。子どもと歩くときに不安…。"></textarea>
+              <div class="hintline">ヒント：①そのとき何が起きた？ ②どんな気持ち？ ③何が変わったらいい？</div>
+            </div>
+
+            <div class="attachments" aria-label="添付（任意）">
+              <div class="att">
+                <div class="top">
+                  <strong>画像（任意）</strong>
+                  <label class="mini-btn" for="img">選ぶ</label>
+                </div>
+                <input id="img" type="file" accept="image/*" style="display:none" />
+                <div class="file" id="imgFile">未選択</div>
+                <div class="preview" id="imgPrev"><img alt="選択した画像のプレビュー" /></div>
+              </div>
+
+              <div class="att">
+                <div class="top">
+                  <strong>音声（任意）</strong>
+                  <button class="mini-btn" id="recBtn" type="button">録音</button>
+                </div>
+                <input id="aud" type="file" accept="audio/*" style="display:none" />
+                <div class="file" id="audFile">未選択（録音またはファイル）</div>
+                <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">
+                  <button class="btn-xs" type="button" id="pickAud">音声ファイル</button>
+                  <button class="btn-xs primary" type="button" id="clearAtt">添付クリア</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="submitline">
+              <div class="privacy">
+                <b>安心のために：</b>このプロトタイプは投稿をサーバー送信せず、端末内（localStorage）に保存します。実運用では「前橋市民認証」「個人情報の最小化」「暗号化」「公開範囲設定」が必須です。
+              </div>
+              <button class="btn primary" type="submit">
+                <span class="icon" aria-hidden="true">✦</span>
+                <div style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                  <strong>投稿する</strong>
+                  <span>あなたの声を大切に扱います</span>
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card pane">
+          <div class="cap">Step 2｜AIが整理し、次に繋ぐ</div>
+          <div class="mini">
+            <div class="h">AIトリアージ（デモ）</div>
+            <div class="p">
+              投稿を「テーマ」「緊急度」「似ている声」に分類し、議論の束をつくります。<br>
+              透明性のために、どのように整理したか（ラベル）も公開します。
+            </div>
+          </div>
+
+          <div class="map" style="padding:0; margin-top:12px;">
+            <div class="flow">
+              <div class="node">
+                <h3>投稿（Issue）</h3>
+                <p>市民の生の声。短文・画像・音声もOK。</p>
+                <div class="who">
+                  <span class="whochip y"><i></i><b>市民</b> の経験</span>
+                  <span class="whochip"><i></i>「違和感」</span>
+                </div>
+              </div>
+              <div class="node">
+                <h3>AI解析（Cluster）</h3>
+                <p>似た声を束ねて、論点を見える形に。</p>
+                <div class="who">
+                  <span class="whochip"><i></i><b>AI</b> 整理</span>
+                  <span class="whochip o"><i></i>急増アラート</span>
+                </div>
+              </div>
+              <div class="node">
+                <h3>座談会（Dialogue）</h3>
+                <p>当事者の声×専門知で、現実解へ。</p>
+                <div class="who">
+                  <span class="whochip"><i></i><b>阿久澤萌</b></span>
+                  <span class="whochip y"><i></i>ボード</span>
+                </div>
+              </div>
+              <div class="node">
+                <h3>提言（Action）</h3>
+                <p>議会質問・提案・予算へ接続。</p>
+                <div class="who">
+                  <span class="whochip o"><i></i><b>議会</b></span>
+                  <span class="whochip"><i></i>市民運動</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="casebox">
+              <div class="case">
+                <div class="ct">デモ：投稿→次のステップ</div>
+                <div class="cd">
+                  あなたが投稿すると、タイムラインに「AI解析中」ステータスが付き、数秒後に「座談会テーマ候補」へ進む演出が入ります（擬似）。
+                </div>
+              </div>
+              <div class="case">
+                <div class="ct">透明性（オープン・ガバナンス）</div>
+                <div class="cd">
+                  実運用では、GitHub Issueのように「対応履歴」「コメント」「Closeまで」を公開できる設計が理想です（個人情報は除外・要配慮）。
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section id="post" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-2xl text-center">
-            <h3 class="text-3xl font-bold mb-8">前橋の「違和感」ポスト</h3>
-            <form class="space-y-6 bg-white p-8 rounded-3xl shadow-sm text-left">
-                <div class="grid md:grid-cols-2 gap-4">
-                    <input type="text" class="border border-gray-300 p-3 rounded-lg" placeholder="お名前">
-                    <select class="border border-gray-300 p-3 rounded-lg">
-                        <option>お住まいの地域を選択</option>
-                        <option>前橋市中心部</option>
-                        <option>周辺地域</option>
-                    </select>
-                </div>
-                <textarea rows="4" class="w-full border border-gray-300 p-3 rounded-lg" placeholder="「今のあたりまえ」への違和感をお書きください"></textarea>
-                <button type="submit" class="w-full bg-maebashi-blue text-white py-4 rounded-full font-bold text-xl shadow-lg">声を届ける</button>
-            </form>
+    <!-- Roundtable -->
+    <section id="roundtable" aria-label="デジタル座談会">
+      <div class="section-head">
+        <div>
+          <h2>月例テーマ別 デジタル座談会</h2>
+          <p>ライブ配信＋AI要約議事録で、参加できない人にも届く。「途中の悩み」も共有して、参加の心理的ハードルを下げます。</p>
         </div>
+        <div class="tiny">※YouTube埋め込みは差し替え可</div>
+      </div>
+
+      <div class="grid-2">
+        <div class="card pane">
+          <div class="cap">テーマ選択</div>
+          <div class="roundtabs" id="rtTabs" role="tablist" aria-label="座談会カテゴリ">
+            <div class="rt active" data-rt="福祉" role="tab" aria-selected="true">福祉</div>
+            <div class="rt" data-rt="教育" role="tab">教育</div>
+            <div class="rt" data-rt="農業" role="tab">農業</div>
+            <div class="rt" data-rt="自治・地域" role="tab">自治・地域</div>
+          </div>
+
+          <div class="embed" aria-label="ライブ配信（デモ）">
+            <!-- Demo embed: replace with your real YouTube live URL -->
+            <iframe
+              src="https://www.youtube.com/embed/5qap5aO4i9A"
+              title="デジタル座談会（デモ）"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="minutes" aria-label="AI要約議事録（デモ）">
+            <div class="mh">
+              <strong id="minTitle">AI要約議事録（福祉）</strong>
+              <span>リアルタイム生成（想定）</span>
+            </div>
+            <ul id="minutesList"></ul>
+          </div>
+        </div>
+
+        <div class="card pane">
+          <div class="cap">「専門知のバックアップ」ボード</div>
+          <div class="mini">
+            <div class="h">市民の声 × 専門性 × 現場</div>
+            <div class="p">
+              「教授だけ」ではなく、自治会長や現場の人がライトアップされる設計に。<br>
+              前橋の“リアルな困りごと”を、机上で終わらせません。
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="grid-2">
+            <div class="info">
+              <div class="h">福祉</div>
+              <div class="d">萩原氏（現場連携・対人支援の視点）</div>
+            </div>
+            <div class="info">
+              <div class="h">教育</div>
+              <div class="d">金井教授（研究知・評価設計の視点）</div>
+            </div>
+            <div class="info">
+              <div class="h">自治・地域</div>
+              <div class="d">岡自治会長（生活者・地域運営の視点）</div>
+            </div>
+            <div class="info">
+              <div class="h">広報・社会連携</div>
+              <div class="d">廣石氏（伝わる設計・共創の視点）</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <button class="btn" type="button" id="btnSeedFromPosts" style="width:100%; justify-content:space-between">
+              <span style="display:flex;align-items:center;gap:10px;">
+                <span class="icon" aria-hidden="true">✳︎</span>
+                <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.15">
+                  <strong>投稿からテーマ候補を作る（デモ）</strong>
+                  <span>最近の声をクラスタリング風に</span>
+                </span>
+              </span>
+              <span aria-hidden="true" style="color:var(--muted);font-size:12px;">→</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <h3 class="text-2xl font-bold mb-10">共に考えるボードメンバー</h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-2 overflow-hidden border-2 border-maebashi-blue">
-                        <img src="https://via.placeholder.com/150?text=Hagiwara">
-                    </div>
-                    <h5 class="font-bold">萩原 氏</h5>
-                    <p class="text-[10px] text-maebashi-blue">デジタル戦略</p>
+    <!-- Process -->
+    <section id="process" aria-label="プロセス・マップ">
+      <div class="section-head">
+        <div>
+          <h2>プロセス・マップ</h2>
+          <p>「1つの違和感」が、どの対話を経て、議会発言や提言に繋がったか。“家系図”のように辿れる設計です（プロトタイプ）。</p>
+        </div>
+        <div class="tiny">※ここではデモの事例を表示</div>
+      </div>
+
+      <div class="card map">
+        <div class="flow">
+          <div class="node">
+            <h3>Issue #014｜夜道が暗くて怖い</h3>
+            <p>投稿：夕方のバス停付近。子どもと歩くと不安。</p>
+            <div class="who">
+              <span class="whochip y"><i></i><b>市民</b></span>
+              <span class="whochip"><i></i>自治・地域</span>
+            </div>
+          </div>
+
+          <div class="node">
+            <h3>AI解析｜「街灯」「歩行安全」で束ねる</h3>
+            <p>類似投稿が増加。緊急度：中（夕方〜夜の安全）。</p>
+            <div class="who">
+              <span class="whochip"><i></i><b>AI</b></span>
+              <span class="whochip o"><i></i>急増アラート</span>
+            </div>
+          </div>
+
+          <div class="node">
+            <h3>座談会｜自治会×子育て世代×行政</h3>
+            <p>現場の導線を確認。優先箇所の合意と実装案。</p>
+            <div class="who">
+              <span class="whochip y"><i></i><b>岡自治会長</b></span>
+              <span class="whochip"><i></i><b>阿久澤萌</b></span>
+            </div>
+          </div>
+
+          <div class="node">
+            <h3>提言｜照明改善の優先順位と予算根拠</h3>
+            <p>議会での発言・担当部署との調整・改善スケジュールの提示。</p>
+            <div class="who">
+              <span class="whochip o"><i></i><b>議会</b></span>
+              <span class="whochip"><i></i><b>金井教授</b>（評価）</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="casebox">
+          <div class="case">
+            <div class="ct">“未完成”の公開</div>
+            <div class="cd">途中で対立した意見や、まだ決まっていない点も公開できると、市民の参加心理が上がります（荒れ対策としてモデレーションは必須）。</div>
+          </div>
+          <div class="case">
+            <div class="ct">市民のフィードバック・ループ</div>
+            <div class="cd">提言後に「どう変わった？」を再投稿できる導線を作ると、改善の検証（学習）が回り続けます。</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Board -->
+    <section id="board" aria-label="ボードメンバー">
+      <div class="section-head">
+        <div>
+          <h2>ボードメンバー（専門性と安心感）</h2>
+          <p>“背後にいる専門知”を見える化し、個人の声が置き去りにならない設計へ。</p>
+        </div>
+        <div class="tiny">※実名の扱いは運用ポリシーに合わせて調整</div>
+      </div>
+
+      <div class="board" role="list">
+        <div class="member" role="listitem">
+          <div class="n">萩原氏</div>
+          <div class="r">福祉・現場連携</div>
+          <div class="s">当事者の声を“言葉になる前”から受け取り、支援・共助の視点で論点化。</div>
+          <div class="k">
+            <span class="pill2">対人支援</span>
+            <span class="pill2 y">コミュニティ</span>
+          </div>
+        </div>
+
+        <div class="member" role="listitem">
+          <div class="n">金井教授</div>
+          <div class="r">研究知・評価設計</div>
+          <div class="s">議論を“良い話”で終わらせず、指標・仮説・検証で前進させる伴走。</div>
+          <div class="k">
+            <span class="pill2">エビデンス</span>
+            <span class="pill2 o">評価</span>
+          </div>
+        </div>
+
+        <div class="member" role="listitem">
+          <div class="n">岡自治会長</div>
+          <div class="r">自治・地域運営</div>
+          <div class="s">生活者のリアル、既存組織の知恵、現場の制約を“前向きな形”に翻訳。</div>
+          <div class="k">
+            <span class="pill2 y">現場</span>
+            <span class="pill2">合意形成</span>
+          </div>
+        </div>
+
+        <div class="member" role="listitem">
+          <div class="n">廣石氏</div>
+          <div class="r">広報・社会連携</div>
+          <div class="s">「伝わる」デザインと共創の仕組みで、参加の入口を広げ、輪を拡張。</div>
+          <div class="k">
+            <span class="pill2 o">ストーリー</span>
+            <span class="pill2">共創</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer aria-label="フッター">
+      <div class="foot">
+        <div>
+          <div style="font-weight:900;color:#2b3344">前橋 Voice to Action Lab（プロトタイプ）</div>
+          <div style="margin-top:6px; font-family:var(--cap); line-height:1.8;">
+            ※限定公開（noindex）｜GitHub Pages で動作する静的サイト構成（HTML/CSS/JSのみ）<br>
+            実運用は、認証・公開範囲・個人情報保護・モデレーション・ログ監査を必ず設計してください。
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start">
+          <a href="#post">投稿フォームへ</a>
+          <a href="#timeline">タイムラインへ</a>
+          <a href="#process">プロセスへ</a>
+          <a href="https://www.instagram.com/moe.akuzawa/" target="_blank" rel="noreferrer noopener">Instagram</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Mobile bottom bar -->
+  <div class="mobilebar" role="navigation" aria-label="モバイルナビ">
+    <div class="inner">
+      <div class="mnav">
+        <button type="button" data-jump="#timeline" class="active">種</button>
+        <button type="button" data-jump="#roundtable">座談会</button>
+        <button type="button" data-jump="#process">マップ</button>
+        <button type="button" data-jump="#board">ボード</button>
+      </div>
+      <button type="button" class="fab" id="fabPost">＋ 投稿</button>
+    </div>
+  </div>
+
+  <!-- About modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="box">
+      <div class="head">
+        <strong id="modalTitle">このプロトタイプの目的</strong>
+        <button type="button" id="closeModal">閉じる</button>
+      </div>
+      <div class="content">
+        <p>
+          このサイトは「意見箱」ではありません。<b>個人の小さな違和感が、専門家とAIを経て、政策や市民運動へと昇華されるプロセス</b>を可視化するための“OS”です。
+        </p>
+        <p>
+          あえて「未完成」を共有することで、市民が「自分も参加していいんだ」と思える心理的安全性をつくります。
+        </p>
+        <div class="grid">
+          <div class="info">
+            <div class="h">設計思想</div>
+            <div class="d">誠実さ（透明性）／情熱（スピードと推進）／親しみやすさ（片手UI）</div>
+          </div>
+          <div class="info">
+            <div class="h">次の実装候補</div>
+            <div class="d">前橋市民認証・公開範囲設定・モデレーション・データ匿名化・監査ログ</div>
+          </div>
+        </div>
+        <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn primary" type="button" id="modalGoPost">
+            <span class="icon" aria-hidden="true">✦</span>
+            <strong>投稿してみる</strong>
+          </button>
+          <button class="btn" type="button" id="wipeLocal">
+            <span class="icon" aria-hidden="true">⟲</span>
+            <strong>ローカル投稿を消す</strong>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* =========
+      Data Model
+      ========= */
+    const STEPS = [
+      { key: "posted", label: "市民の投稿" },
+      { key: "ai", label: "AI解析中" },
+      { key: "picked", label: "座談会テーマ選定" },
+      { key: "proposed", label: "政策提言済み" }
+    ];
+
+    const DEMO_POSTS = [
+      {
+        id: "demo-001",
+        title: "歩道が狭くてベビーカーが通りにくい",
+        cat: "自治・地域",
+        feel: "違和感",
+        place: "駅前〜商店街",
+        wish: "安全にすれ違える歩道",
+        body: "朝の時間帯、ベビーカー同士がすれ違えず、車道に出そうになって怖かった。通学路でもあるので安心できる導線がほしい。",
+        createdAt: Date.now() - 1000*60*60*22,
+        step: 2,
+        tags: ["歩行安全","通学路"]
+      },
+      {
+        id: "demo-002",
+        title: "放課後の居場所が足りない気がする",
+        cat: "教育",
+        feel: "不安",
+        place: "学区内",
+        wish: "安心できる居場所の選択肢",
+        body: "親が仕事で遅い日、子どもが過ごせる場所が限られていて心配。図書館や公共施設の使い方も含めて、分かりやすい導線があると助かる。",
+        createdAt: Date.now() - 1000*60*60*48,
+        step: 1,
+        tags: ["放課後","居場所"]
+      },
+      {
+        id: "demo-003",
+        title: "高齢者が集まれる“ちょうどいい”場がほしい",
+        cat: "福祉",
+        feel: "期待",
+        place: "近所の公民館",
+        wish: "気軽に話せる小さな場",
+        body: "イベントだとハードルが高いけど、週1でも短時間でも、顔を出せる場があると孤立が減ると思う。自治会ともつながる形だと続きそう。",
+        createdAt: Date.now() - 1000*60*60*68,
+        step: 3,
+        tags: ["孤立","つながり"]
+      },
+      {
+        id: "demo-004",
+        title: "地元野菜の販路と学びがつながると嬉しい",
+        cat: "農業",
+        feel: "期待",
+        place: "直売所・学校",
+        wish: "子どもが“食”を体験できる",
+        body: "農家さんの話を聞く機会があると、子どもも食に興味が出る。給食や学校の授業とつなげられないかな。",
+        createdAt: Date.now() - 1000*60*60*96,
+        step: 0,
+        tags: ["食育","地産地消"]
+      }
+    ];
+
+    const LS_KEY = "v2a_posts_v1";
+    const uid = () => Math.random().toString(36).slice(2,9) + "-" + Date.now().toString(36);
+
+    function loadLocalPosts(){
+      try{
+        const raw = localStorage.getItem(LS_KEY);
+        if(!raw) return [];
+        const parsed = JSON.parse(raw);
+        if(!Array.isArray(parsed)) return [];
+        return parsed;
+      }catch(e){
+        return [];
+      }
+    }
+    function saveLocalPosts(arr){
+      localStorage.setItem(LS_KEY, JSON.stringify(arr));
+    }
+
+    function fmtDate(ts){
+      const d = new Date(ts);
+      const pad = (n)=> String(n).padStart(2,"0");
+      return `${d.getFullYear()}/${pad(d.getMonth()+1)}/${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+    }
+
+    function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+    function toast(msg){
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("on");
+      window.clearTimeout(toast._timer);
+      toast._timer = window.setTimeout(()=> t.classList.remove("on"), 2400);
+    }
+
+    /* =========
+      Rendering
+      ========= */
+    let state = {
+      filter: "all",
+      q: "",
+      rt: "福祉"
+    };
+
+    function getAllPosts(){
+      const local = loadLocalPosts();
+      // Merge: local first (newest), then demo
+      const merged = [...local, ...DEMO_POSTS];
+      // Sort desc
+      merged.sort((a,b)=> (b.createdAt||0) - (a.createdAt||0));
+      return merged;
+    }
+
+    function stepLabel(i){ return STEPS[i]?.label || "—"; }
+
+    function renderStats(){
+      const local = loadLocalPosts();
+      const all = getAllPosts();
+      const active = all.filter(p => (p.step ?? 0) < 3).length;
+      document.getElementById("statPosts").textContent = local.length.toString();
+      document.getElementById("statActive").textContent = active.toString();
+    }
+
+    function dots(step){
+      const s = clamp(step ?? 0, 0, 3);
+      let html = `<span class="dots" aria-hidden="true">`;
+      for(let i=0;i<4;i++){
+        html += `<span class="${i<=s ? "on": ""}"></span>`;
+      }
+      html += `</span>`;
+      return html;
+    }
+
+    function tagChip(cat){
+      const map = {
+        "福祉": "blue",
+        "教育": "orange",
+        "農業": "blue",
+        "自治・地域": "orange"
+      };
+      const c = map[cat] || "blue";
+      return `<span class="tag ${c}"><i></i>${cat}</span>`;
+    }
+
+    function renderPosts(){
+      const box = document.getElementById("posts");
+      const all = getAllPosts();
+
+      const filtered = all.filter(p => {
+        const f = state.filter;
+        const okCat = (f==="all") ? true : p.cat === f;
+        const q = state.q.trim().toLowerCase();
+        if(!q) return okCat;
+        const hay = [
+          p.title, p.body, p.cat, p.feel, p.place, p.wish,
+          ...(p.tags||[])
+        ].filter(Boolean).join(" ").toLowerCase();
+        return okCat && hay.includes(q);
+      });
+
+      if(filtered.length === 0){
+        box.innerHTML = `
+          <div class="post">
+            <div class="post-meta">
+              <div class="title">まだ該当する投稿がありません</div>
+              <div class="sub">カテゴリやキーワードを変えるか、あなたの違和感を投稿してみてください。</div>
+            </div>
+            <div class="post-actions">
+              <div class="tiny">“短い一言”でも、十分な第一歩です。</div>
+              <button class="btn-xs primary" type="button" onclick="document.querySelector('#post').scrollIntoView({behavior:'smooth'})">投稿へ</button>
+            </div>
+          </div>`;
+        return;
+      }
+
+      box.innerHTML = filtered.map(p => {
+        const step = clamp(p.step ?? 0, 0, 3);
+        const tags = (p.tags||[]).slice(0,3).map(t => `<span class="tag"><i></i>${t}</span>`).join("");
+        const place = p.place ? `・${p.place}` : "";
+        const wish = p.wish ? `・理想：${p.wish}` : "";
+        const who = p.name ? `投稿：${p.name}` : `投稿：匿名`;
+        const idPart = p.id?.startsWith("demo") ? "DEMO" : p.id;
+
+        return `
+          <article class="post" data-id="${p.id}">
+            <div class="post-top">
+              <div class="post-meta">
+                <div class="title">${escapeHtml(p.title || "（無題）")}</div>
+                <div class="sub">
+                  ${tagChip(p.cat)}
+                  <span class="tag"><i style="background:var(--yellow)"></i>${escapeHtml(p.feel || "違和感")}</span>
+                  ${tags}
+                  <span class="tiny">${who}${place}${wish}</span>
                 </div>
-                <div>
-                    <div class="w-24 h-24 bg-gray-200 rounded-full mx-auto mb-2 overflow-hidden border-2 border-ma
+              </div>
+
+              <div style="text-align:right">
+                <div class="tiny">${fmtDate(p.createdAt || Date.now())}</div>
+                <div class="tiny" style="margin-top:4px;opacity:.85">#${escapeHtml(idPart || "")}</div>
+              </div>
+            </div>
+
+            <div class="post-body">${escapeHtml(p.body || "")}</div>
+
+            <div class="post-actions">
+              <div class="progress">
+                <span class="stepbar">
+                  ${dots(step)}
+                  <span>${stepLabel(step)}</span>
+                </span>
+                <span class="tiny">この声は「${stepLabel(step)}」にあります</span>
+              </div>
+
+              <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+                <button class="btn-xs" type="button" data-act="nudge">次へ進める（デモ）</button>
+                <button class="btn-xs primary" type="button" data-act="copy">共有用リンク風</button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      // Bind actions
+      box.querySelectorAll("button[data-act='nudge']").forEach(btn=>{
+        btn.addEventListener("click", (e)=>{
+          const article = e.target.closest(".post");
+          const id = article?.dataset?.id;
+          nudgeStep(id);
+        });
+      });
+      box.querySelectorAll("button[data-act='copy']").forEach(btn=>{
+        btn.addEventListener("click", (e)=>{
+          const article = e.target.closest(".post");
+          const id = article?.dataset?.id;
+          const fake = `${location.origin}${location.pathname}#issue=${encodeURIComponent(id)}`;
+          navigator.clipboard?.writeText(fake).then(()=>{
+            toast("共有用リンク風をコピーしました（デモ）");
+          }).catch(()=>{
+            toast("コピーできませんでした（ブラウザ設定）");
+          });
+        });
+      });
+    }
+
+    function escapeHtml(str){
+      return String(str)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;")
+        .replaceAll("\n","<br>");
+    }
+
+    function nudgeStep(id){
+      // Only local posts are editable in this demo
+      const local = loadLocalPosts();
+      const idx = local.findIndex(p => p.id === id);
+      if(idx === -1){
+        toast("デモ投稿は固定です。あなたの投稿で試せます。");
+        return;
+      }
+      local[idx].step = clamp((local[idx].step ?? 0) + 1, 0, 3);
+      saveLocalPosts(local);
+      renderStats();
+      renderPosts();
+      toast(`ステータスを「${stepLabel(local[idx].step)}」へ進めました（デモ）`);
+    }
+
+    /* =========
+      Filters / Search
+      ========= */
+    document.querySelectorAll(".chip").forEach(ch=>{
+      ch.addEventListener("click", ()=>{
+        document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));
+        ch.classList.add("active");
+        state.filter = ch.dataset.filter;
+        renderPosts();
+      });
+    });
+
+    const q = document.getElementById("q");
+    q.addEventListener("input", ()=>{
+      state.q = q.value || "";
+      renderPosts();
+    });
+
+    /* =========
+      Form + Attachments + Fake AI step
+      ========= */
+    const imgInput = document.getElementById("img");
+    const imgFile = document.getElementById("imgFile");
+    const imgPrev = document.getElementById("imgPrev");
+    const imgPrevImg = imgPrev.querySelector("img");
+
+    imgInput.addEventListener("change", ()=>{
+      const f = imgInput.files?.[0];
+      if(!f){
+        imgFile.textContent = "未選択";
+        imgPrev.style.display = "none";
+        imgPrevImg.src = "";
+        return;
+      }
+      imgFile.textContent = `${f.name}（${Math.round(f.size/1024)}KB）`;
+      const url = URL.createObjectURL(f);
+      imgPrevImg.src = url;
+      imgPrev.style.display = "block";
+    });
+
+    const audInput = document.getElementById("aud");
+    const audFile = document.getElementById("audFile");
+    document.getElementById("pickAud").addEventListener("click", ()=> audInput.click());
+    audInput.addEventListener("change", ()=>{
+      const f = audInput.files?.[0];
+      if(!f){
+        audFile.textContent = "未選択（録音またはファイル）";
+        return;
+      }
+      audFile.textContent = `${f.name}（${Math.round(f.size/1024)}KB）`;
+    });
+
+    document.getElementById("clearAtt").addEventListener("click", ()=>{
+      imgInput.value = "";
+      audInput.value = "";
+      imgFile.textContent = "未選択";
+      audFile.textContent = "未選択（録音またはファイル）";
+      imgPrev.style.display = "none";
+      imgPrevImg.src = "";
+      toast("添付をクリアしました");
+    });
+
+    // Audio recording (optional)
+    let rec = { mediaRecorder:null, chunks:[], stream:null, isRec:false };
+    const recBtn = document.getElementById("recBtn");
+    recBtn.addEventListener("click", async ()=>{
+      try{
+        if(rec.isRec){
+          rec.mediaRecorder.stop();
+          recBtn.textContent = "録音";
+          recBtn.style.opacity = "1";
+          rec.isRec = false;
+          return;
+        }
+        if(!navigator.mediaDevices?.getUserMedia){
+          toast("このブラウザは録音に対応していません");
+          return;
+        }
+        rec.stream = await navigator.mediaDevices.getUserMedia({ audio:true });
+        rec.chunks = [];
+        rec.mediaRecorder = new MediaRecorder(rec.stream);
+        rec.mediaRecorder.ondataavailable = (e)=>{ if(e.data.size>0) rec.chunks.push(e.data); };
+        rec.mediaRecorder.onstop = ()=>{
+          const blob = new Blob(rec.chunks, { type: "audio/webm" });
+          // Attach as a file-like reference (demo: we only store a flag)
+          audFile.textContent = `録音（${Math.round(blob.size/1024)}KB）`;
+          // Stop tracks
+          rec.stream?.getTracks?.().forEach(t=>t.stop());
+          rec.stream = null;
+          toast("録音を保存しました（デモ：端末内）");
+        };
+        rec.mediaRecorder.start();
+        recBtn.textContent = "停止";
+        recBtn.style.opacity = ".95";
+        rec.isRec = true;
+        toast("録音中…（もう一度押すと停止）");
+      }catch(err){
+        toast("録音を開始できませんでした（権限をご確認ください）");
+      }
+    });
+
+    document.getElementById("postForm").addEventListener("submit", (e)=>{
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const cat = document.getElementById("cat").value;
+      const feel = document.getElementById("feel").value;
+      const place = document.getElementById("place").value.trim();
+      const wish = document.getElementById("wish").value.trim();
+      const body = document.getElementById("body").value.trim();
+
+      if(!body){
+        toast("内容を入力してください");
+        return;
+      }
+
+      const title = pickTitle(body, cat, feel);
+
+      const post = {
+        id: uid(),
+        name: name || "",
+        cat, feel, place, wish,
+        title,
+        body,
+        createdAt: Date.now(),
+        step: 0,
+        tags: autoTags(body, cat, feel),
+        // Attachments are not persisted as binary in this static demo
+        hasImage: !!imgInput.files?.[0],
+        hasAudio: (!!audInput.files?.[0]) || (audFile.textContent.startsWith("録音")),
+      };
+
+      const local = loadLocalPosts();
+      local.unshift(post);
+      saveLocalPosts(local);
+
+      // Reset form basics (keep category/feel for quick consecutive posts)
+      document.getElementById("name").value = "";
+      document.getElementById("place").value = "";
+      document.getElementById("wish").value = "";
+      document.getElementById("body").value = "";
+      imgInput.value = "";
+      audInput.value = "";
+      imgFile.textContent = "未選択";
+      audFile.textContent = "未選択（録音またはファイル）";
+      imgPrev.style.display = "none";
+      imgPrevImg.src = "";
+
+      renderStats();
+      renderPosts();
+      toast("投稿を受け取りました。AI解析へ進みます（デモ）");
+
+      // Fake AI progress: 0->1->2
+      setTimeout(()=>{
+        const local2 = loadLocalPosts();
+        const idx = local2.findIndex(x=>x.id===post.id);
+        if(idx !== -1){
+          local2[idx].step = 1;
+          saveLocalPosts(local2);
+          renderStats();
+          renderPosts();
+          toast("AI解析中…（デモ）");
+        }
+      }, 900);
+
+      setTimeout(()=>{
+        const local3 = loadLocalPosts();
+        const idx = local3.findIndex(x=>x.id===post.id);
+        if(idx !== -1){
+          local3[idx].step = 2;
+          saveLocalPosts(local3);
+          renderStats();
+          renderPosts();
+          toast("座談会テーマ候補に追加しました（デモ）");
+        }
+      }, 2400);
+
+      // Scroll timeline for feedback
+      document.querySelector("#timeline").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    function pickTitle(body, cat, feel){
+      const s = body.replace(/\s+/g," ").trim();
+      const short = s.length > 34 ? s.slice(0,34) + "…" : s;
+      const prefix = {
+        "福祉":"暮らしの支え：",
+        "教育":"学びの現場：",
+        "農業":"食と農：",
+        "自治・地域":"まちの動線："
+      }[cat] || "違和感：";
+      const emo = {
+        "怒り":"（改善を急ぎたい）",
+        "不安":"（安心したい）",
+        "期待":"（こうなったら嬉しい）",
+        "困っている":"（困りごと）",
+        "うれしかった（共有したい）":"（良かったこと）",
+        "違和感":""
+      }[feel] || "";
+      return `${prefix}${short}${emo}`;
+    }
+
+    function autoTags(body, cat, feel){
+      const tags = new Set();
+      tags.add(cat);
+      if(feel && feel !== "違和感") tags.add(feel);
+      const t = body.toLowerCase();
+      const dict = [
+        ["歩道","歩行安全"],["暗い","街灯"],["バス","公共交通"],["子ども","子育て"],
+        ["学校","学校"],["給食","給食"],["公園","公園"],["高齢","高齢者"],
+        ["農","農業"],["野菜","地産地消"],["自治会","自治会"],["ゴミ","ごみ"],
+        ["騒音","騒音"],["危ない","安全"]
+      ];
+      dict.forEach(([k,v])=>{
+        if(t.includes(k)) tags.add(v);
+      });
+      return Array.from(tags).slice(0,5);
+    }
+
+    /* =========
+      Roundtable demo content
+      ========= */
+    const MINUTES = {
+      "福祉":[
+        "直近1か月で増えている声：孤立・見守り・移動の困りごと。",
+        "論点：『参加の入口』を小さくする（短時間・少人数・近所）。",
+        "次アクション：地域の“ちょうどいい場”の実証（公民館×小規模）。",
+        "市民への問い：あなたの近所で「顔を出しやすい時間帯」は？"
+      ],
+      "教育":[
+        "直近の声：放課後の居場所・保護者の不安・情報の分散。",
+        "論点：施設の“利用の導線”を一枚にまとめる（誰でもわかる）。",
+        "次アクション：学校・図書館・公共施設の連携マップ案を作成。",
+        "市民への問い：困ったとき、どこに相談できたら安心？"
+      ],
+      "農業":[
+        "直近の声：地元野菜の販路、食育、担い手不足。",
+        "論点：体験が“単発”で終わらない仕組み（学校↔直売所）。",
+        "次アクション：小さな収穫体験＋給食の説明の連動を検討。",
+        "市民への問い：子どもが『食』に興味を持った瞬間は？"
+      ],
+      "自治・地域":[
+        "直近の声：歩行安全、街灯、通学路、見通しの悪い交差点。",
+        "論点：『どこが危ないか』を市民投稿で見える化し優先順位へ。",
+        "次アクション：自治会と現地確認→改善候補を公開し意見募集。",
+        "市民への問い：あなたの“夜の不安ポイント”はどこ？"
+      ]
+    };
+
+    function renderMinutes(){
+      const list = document.getElementById("minutesList");
+      const title = document.getElementById("minTitle");
+      title.textContent = `AI要約議事録（${state.rt}）`;
+      list.innerHTML = (MINUTES[state.rt] || []).map(x=> `<li>${escapeHtml(x)}</li>`).join("");
+    }
+
+    document.querySelectorAll(".rt").forEach(tab=>{
+      tab.addEventListener("click", ()=>{
+        document.querySelectorAll(".rt").forEach(x=>x.classList.remove("active"));
+        tab.classList.add("active");
+        state.rt = tab.dataset.rt;
+        renderMinutes();
+      });
+    });
+
+    document.getElementById("btnSeedFromPosts").addEventListener("click", ()=>{
+      // Lightweight "clustering": show top tags from recent posts
+      const all = getAllPosts().slice(0,10);
+      const freq = new Map();
+      all.forEach(p => (p.tags||[]).forEach(t=>{
+        freq.set(t, (freq.get(t)||0)+1);
+      }));
+      const top = Array.from(freq.entries()).sort((a,b)=>b[1]-a[1]).slice(0,6);
+      if(top.length===0){
+        toast("まだ投稿が少ないため、候補を作れません");
+        return;
+      }
+      const msg = "最近のテーマ候補（デモ）： " + top.map(([t,n])=> `${t}×${n}`).join(" / ");
+      toast(msg);
+    });
+
+    /* =========
+      Navigation helpers
+      ========= */
+    function setActiveNavByHash(){
+      const hash = location.hash || "#timeline";
+      const links = document.querySelectorAll(".nav a");
+      links.forEach(a=>a.classList.remove("active"));
+      const found = Array.from(links).find(a=>a.getAttribute("href")===hash);
+      if(found) found.classList.add("active");
+
+      // Mobile nav
+      document.querySelectorAll(".mnav button").forEach(b=>b.classList.remove("active"));
+      const mb = Array.from(document.querySelectorAll(".mnav button")).find(b=>b.dataset.jump===hash);
+      if(mb) mb.classList.add("active");
+    }
+    window.addEventListener("hashchange", setActiveNavByHash);
+
+    document.querySelectorAll(".nav a").forEach(a=>{
+      a.addEventListener("click", ()=>{
+        setTimeout(setActiveNavByHash, 0);
+      });
+    });
+
+    document.querySelectorAll(".mnav button").forEach(b=>{
+      b.addEventListener("click", ()=>{
+        document.querySelectorAll(".mnav button").forEach(x=>x.classList.remove("active"));
+        b.classList.add("active");
+        document.querySelector(b.dataset.jump).scrollIntoView({behavior:"smooth", block:"start"});
+        history.replaceState(null,"",b.dataset.jump);
+      });
+    });
+
+    // CTA scrolls
+    document.getElementById("goPost").addEventListener("click", ()=> jumpTo("#post"));
+    document.getElementById("btnQuickPost").addEventListener("click", ()=> jumpTo("#post"));
+    document.getElementById("fabPost").addEventListener("click", ()=> jumpTo("#post"));
+    document.getElementById("btnScrollProcess").addEventListener("click", ()=> jumpTo("#process"));
+
+    function jumpTo(sel){
+      document.querySelector(sel).scrollIntoView({behavior:"smooth", block:"start"});
+      history.replaceState(null,"",sel);
+      setActiveNavByHash();
+    }
+
+    /* =========
+      Modal
+      ========= */
+    const modal = document.getElementById("modal");
+    const openModal = ()=> { modal.classList.add("on"); document.body.style.overflow="hidden"; };
+    const closeModal = ()=> { modal.classList.remove("on"); document.body.style.overflow=""; };
+
+    document.getElementById("btnAbout").addEventListener("click", openModal);
+    document.getElementById("closeModal").addEventListener("click", closeModal);
+    modal.addEventListener("click", (e)=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape" && modal.classList.contains("on")) closeModal(); });
+
+    document.getElementById("modalGoPost").addEventListener("click", ()=>{
+      closeModal();
+      jumpTo("#post");
+    });
+
+    document.getElementById("wipeLocal").addEventListener("click", ()=>{
+      if(confirm("ローカルに保存された投稿を削除します。よろしいですか？")){
+        localStorage.removeItem(LS_KEY);
+        renderStats();
+        renderPosts();
+        toast("ローカル投稿を削除しました");
+      }
+    });
+
+    /* =========
+      Quick post button in topbar
+      ========= */
+    document.getElementById("btnQuickPost").addEventListener("click", ()=> jumpTo("#post"));
+
+    /* =========
+      Deep-link demo: #issue=...
+      ========= */
+    function highlightFromHash(){
+      const m = location.hash.match(/issue=([^&]+)/);
+      if(!m) return;
+      const id = decodeURIComponent(m[1]);
+      const el = document.querySelector(`.post[data-id="${CSS.escape(id)}"]`);
+      if(el){
+        el.scrollIntoView({behavior:"smooth", block:"center"});
+        el.style.outline = "3px solid rgba(255,211,77,.9)";
+        el.style.boxShadow = "0 0 0 6px rgba(255,211,77,.25), 0 20px 60px rgba(0,0,0,.12)";
+        setTimeout(()=>{
+          el.style.outline = "";
+          el.style.boxShadow = "";
+        }, 2200);
+      }
+    }
+
+    /* =========
+      Init
+      ========= */
+    function init(){
+      renderStats();
+      renderPosts();
+      renderMinutes();
+      setActiveNavByHash();
+      highlightFromHash();
+      toast("限定公開プロトタイプ（noindex）として起動しました");
+    }
+    init();
+  </script>
+</body>
+</html>
